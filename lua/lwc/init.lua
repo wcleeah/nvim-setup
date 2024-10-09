@@ -1,2 +1,2 @@
-require("lwc.keymap")
+require("lwc.config")
 require("lwc.plugin")
