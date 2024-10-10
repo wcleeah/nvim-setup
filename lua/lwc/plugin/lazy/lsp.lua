@@ -26,9 +26,11 @@ return {
                     { name = 'nvim_lsp' },
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-s>'] = cmp.mapping.complete(),
+                    ['<C-e>'] = cmp.mapping.abort(),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 })
             })
         end
@@ -60,6 +62,8 @@ return {
                 vim.keymap.set('n', 'gp', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
                 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                 vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+                vim.keymap.set("n", "<leader>gca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)     -- Normal mode
+                vim.keymap.set("v", "<leader>gca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)     -- Visual mode
             end
 
             lsp_zero.extend_lspconfig({
