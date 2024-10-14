@@ -11,6 +11,38 @@ return {
         config = true,
     },
     {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    },
+    {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
         config = function()
@@ -60,10 +92,10 @@ return {
                 vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
                 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
                 vim.keymap.set('n', 'gp', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-                vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+                vim.keymap.set('n', 'gsr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                 vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-                vim.keymap.set("n", "<leader>gca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)     -- Normal mode
-                vim.keymap.set("v", "<leader>gca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)     -- Visual mode
+                vim.keymap.set("n", "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts) -- Normal mode
+                vim.keymap.set("v", "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts) -- Visual mode
             end
 
             lsp_zero.extend_lspconfig({
