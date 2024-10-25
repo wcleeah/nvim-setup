@@ -32,4 +32,7 @@ vim.keymap.set({"n", "v"}, "<leader>wl", "<c-w>l")
 vim.keymap.set({"n", "v"}, "<leader>wj", "<c-w>j")
 vim.keymap.set({"n", "v"}, "<leader>wk", "<c-w>k")
 vim.keymap.set({"n", "v"}, "<leader>wv", "<c-w>v")
+vim.keymap.set({"n", "v"}, "<leader>wa", "<c-w>>")
+vim.keymap.set({"n", "v"}, "<leader>wd", "<c-w><")
+
 vim.keymap.set("n", "<leader>fs", vim.cmd.Ex)

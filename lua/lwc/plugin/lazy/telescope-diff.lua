@@ -5,11 +5,11 @@ return   {
 	},
 	config = function()
 		require("telescope").load_extension("diff")
-		vim.keymap.set("n", "<leader>csd", function()
-			require("telescope").extensions.diff.diff_files({ hidden = true })
+		vim.keymap.set("n", "<leader>fdd", function()
+			require("telescope").extensions.diff.diff_files({ hidden = true, no_ignore = true })
 		end, { desc = "Compare 2 files" })
-		vim.keymap.set("n", "<leader>cd", function()
-			require("telescope").extensions.diff.diff_current({ hidden = true })
+		vim.keymap.set("n", "<leader>fd", function()
+			require("telescope").extensions.diff.diff_current({ hidden = true, no_ignore = true })
 		end, { desc = "Compare file with current" })
 	end
 }
