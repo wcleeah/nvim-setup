@@ -64,6 +64,22 @@ return {
         end
     },
     {
+        'stevearc/conform.nvim',
+        opts = {},
+        config = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    -- Conform will run the first available formatter
+                    javascript = { "prettierd", "prettier", stop_after_first = true },
+                    typescript = { "prettierd", "prettier", stop_after_first = true },
+                    go = { "gofmt" },
+                    tf = { "terraform_fmt" },
+                },
+            })
+            vim.keymap.set("n", "<leader>f", "<cmd>lua require('conform').format()<cr>", { desc = "Format code" })
+        end
+    },
+    {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
@@ -85,7 +101,6 @@ return {
                 vim.keymap.set('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
                 vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
                 vim.keymap.set('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-                vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
                 vim.keymap.set('n', '<leader>lcn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                 vim.keymap.set("n", "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
             end
